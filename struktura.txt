@@ -1,0 +1,654 @@
+
++---BrokerBazePodataka
+¦   ¦   Broker.cs
+¦   ¦   BrokerBazePodataka.csproj
+¦   ¦   DbConnection.cs
+¦   ¦         
++---Domeni
+¦   ¦   Dani.cs
+¦   ¦   Domeni.csproj
+¦   ¦   EvidencijaNastave.cs
+¦   ¦   GrupaUcenika.cs
+¦   ¦   IEntity.cs
+¦   ¦   Kurs.cs
+¦   ¦   Licenca.cs
+¦   ¦   Pol.cs
+¦   ¦   SafeGet.cs
+¦   ¦   Sertifikat.cs
+¦   ¦   StavkaEvidencijeNastave.cs
+¦   ¦   TezinaKursa.cs
+¦   ¦   Ucenik.cs
+¦   ¦   UcenikGrupa.cs
+¦   ¦   Ucitelj.cs
+¦   ¦   Uzrast.cs
+¦   ¦   
+¦   
++---Klijent
+¦   ¦   DodajLicencuForma.cs
+¦   ¦   Glavna.cs
+¦   ¦   Komunikacija.cs
+¦   ¦   LogIn.cs
+¦   ¦   PomocnaForma.cs
+¦   ¦   Program.cs
+¦           
+¦   +---Controllers
+¦   ¦   ¦   LogInKontroler.cs
+¦   ¦   ¦   MainCoordinator.cs
+¦   ¦   ¦   
+¦   ¦   +
+¦   ¦   ¦   KreirajEvidencijuNastaveKontroler.cs
+¦   ¦   ¦   PretraziEvidencijuNastaveKontroler.cs
+¦   ¦   ¦   PrikazEvidencijeNastaveKontroler.cs
+¦   ¦   ¦       
+¦   ¦   ¦   KreirajGrupuUcenikaKontroler.cs
+¦   ¦   ¦   PretraziGrupuUcenikaKontroler.cs
+¦   ¦   ¦   KursKontroler.cs
+¦   ¦   ¦   KreirajLicencuKontroler.cs
+¦   ¦   ¦   PretragaLicenciKontroler.cs
+¦   ¦   ¦   RadSaSertifikatomKontroler.cs
+¦   ¦   ¦   RadSaStavkomEvidencijeKontroler.cs
+¦   ¦   ¦   UcenikGrupaKontroler.cs
+¦   ¦   ¦   KreirajUcenikaKontroler.cs
+¦   ¦   ¦   PretragaUcenikaKontroler.cs
+¦   ¦       KreirajUciteljaKontroler.cs
+¦   ¦       PretragaUciteljaKontroler.cs
+¦   ¦       PrikazUciteljaKontroler.cs
+¦   ¦       
+¦   +---User controlers
+¦   ¦   ¦   ucLogIn.cs
+¦   ¦   ¦   ucLogIn.Designer.cs
+¦   ¦   ¦   ucLogIn.resx
+¦   ¦   ¦   
+¦   ¦   +---EvidencijaNastave
+¦   ¦   ¦       UCPretraziEvidencijuNastave.cs
+¦   ¦   ¦       UCPretraziEvidencijuNastave.Designer.cs
+¦   ¦   ¦       UCPretraziEvidencijuNastave.resx
+¦   ¦   ¦       UCPrikazEvidencijeNastave.cs
+¦   ¦   ¦       UCPrikazEvidencijeNastave.Designer.cs
+¦   ¦   ¦       UCPrikazEvidencijeNastave.resx
+¦   ¦   ¦       UCRadSaEvidencijomNastave.cs
+¦   ¦   ¦       UCRadSaEvidencijomNastave.Designer.cs
+¦   ¦   ¦       UCRadSaEvidencijomNastave.resx
+¦   ¦   ¦       
+¦   ¦   +---GrupaUcenika
+¦   ¦   ¦       UCKreirajGrupuUcenika.cs
+¦   ¦   ¦       UCKreirajGrupuUcenika.Designer.cs
+¦   ¦   ¦       UCKreirajGrupuUcenika.resx
+¦   ¦   ¦       UCpretraziGrupuUcenika.cs
+¦   ¦   ¦       UCpretraziGrupuUcenika.Designer.cs
+¦   ¦   ¦       UCpretraziGrupuUcenika.resx
+¦   ¦   ¦       
+¦   ¦   +---Kurs
+¦   ¦   ¦       UCradSaKursom.cs
+¦   ¦   ¦       UCradSaKursom.Designer.cs
+¦   ¦   ¦       UCradSaKursom.resx
+¦   ¦   ¦       
+¦   ¦   +---Licenca
+¦   ¦   ¦       UCkreirajLicencu.cs
+¦   ¦   ¦       UCkreirajLicencu.Designer.cs
+¦   ¦   ¦       UCkreirajLicencu.resx
+¦   ¦   ¦       UCpretraziLicencu.cs
+¦   ¦   ¦       UCpretraziLicencu.Designer.cs
+¦   ¦   ¦       UCpretraziLicencu.resx
+¦   ¦   ¦       
+¦   ¦   +---Sertifikat
+¦   ¦   ¦       UcRadSaSertifikatima.cs
+¦   ¦   ¦       UcRadSaSertifikatima.Designer.cs
+¦   ¦   ¦       UcRadSaSertifikatima.resx
+¦   ¦   ¦       
+¦   ¦   +---Stavka Evidencije
+¦   ¦   ¦       UCradSaStavkomEvidencijeNastave.cs
+¦   ¦   ¦       UCradSaStavkomEvidencijeNastave.Designer.cs
+¦   ¦   ¦       UCradSaStavkomEvidencijeNastave.resx
+¦   ¦   ¦       
+¦   ¦   +---Ucenik
+¦   ¦   ¦       UCpretraziUcenika.cs
+¦   ¦   ¦       UCpretraziUcenika.Designer.cs
+¦   ¦   ¦       UCpretraziUcenika.resx
+¦   ¦   ¦       UCradSaUcenikom.cs
+¦   ¦   ¦       UCradSaUcenikom.Designer.cs
+¦   ¦   ¦       UCradSaUcenikom.resx
+¦   ¦   ¦       
+¦   ¦   +---UcenikGrupa
+¦   ¦   ¦       UCdodajUcenikGrupa.cs
+¦   ¦   ¦       UCdodajUcenikGrupa.Designer.cs
+¦   ¦   ¦       UCdodajUcenikGrupa.resx
+¦   ¦   ¦       
+¦   ¦   +---Ucitelj
+¦   ¦           UCpretraziUcitelja.cs
+¦   ¦           UCpretraziUcitelja.Designer.cs
+¦   ¦           UCpretraziUcitelja.resx
+¦   ¦           UCPrikazUcitelja.cs
+¦   ¦           UCPrikazUcitelja.Designer.cs
+¦   ¦           UCPrikazUcitelja.resx
+¦   ¦           UCradSaUciteljem.cs
+¦   ¦           UCradSaUciteljem.Designer.cs
+¦   ¦           UCradSaUciteljem.resx
+¦   ¦           
+¦   +---Utils
+¦           WorkMode.cs
+¦           
++---Server
+¦   ¦   ClientHandler.cs
+¦   ¦   Kontroler.cs
+¦   ¦   Program.cs
+¦   ¦   Server.cs
+¦   ¦   Server.csproj
+¦   ¦   
+¦   +---bin
+¦   ¦   +---Debug
+¦   ¦       +---net8.0
+¦   ¦           +---cs
+¦   ¦           +---de
+¦   ¦           +---es
+¦   ¦           +---fr
+¦   ¦           +---it
+¦   ¦           +---ja
+¦   ¦           +---ko
+¦   ¦           +---pl
+¦   ¦           +---pt-BR
+¦   ¦           +---ru
+¦   ¦           +---runtimes
+¦   ¦           ¦   +---unix
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦       +---net8.0
+¦   ¦           ¦   +---win
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦       +---net8.0
+¦   ¦           ¦   +---win-arm64
+¦   ¦           ¦   ¦   +---native
+¦   ¦           ¦   +---win-x64
+¦   ¦           ¦   ¦   +---native
+¦   ¦           ¦   +---win-x86
+¦   ¦           ¦       +---native
+¦   ¦           +---tr
+¦   ¦           +---zh-Hans
+¦   ¦           +---zh-Hant
+¦   +---obj
+¦   ¦   ¦   project.assets.json
+¦   ¦   ¦   project.nuget.cache
+¦   ¦   ¦   Server.csproj.nuget.dgspec.json
+¦   ¦   ¦   Server.csproj.nuget.g.props
+¦   ¦   ¦   Server.csproj.nuget.g.targets
+¦   ¦   ¦   
+¦   ¦   +---Debug
+¦   ¦       +---net8.0
+¦   ¦           ¦   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+¦   ¦           ¦   apphost.exe
+¦   ¦           ¦   Server.AssemblyInfo.cs
+¦   ¦           ¦   Server.AssemblyInfoInputs.cache
+¦   ¦           ¦   Server.assets.cache
+¦   ¦           ¦   Server.csproj.AssemblyReference.cache
+¦   ¦           ¦   Server.csproj.BuildWithSkipAnalyzers
+¦   ¦           ¦   Server.csproj.CoreCompileInputs.cache
+¦   ¦           ¦   Server.csproj.FileListAbsolute.txt
+¦   ¦           ¦   Server.GeneratedMSBuildEditorConfig.editorconfig
+¦   ¦           ¦   Server.GlobalUsings.g.cs
+¦   ¦           ¦   
+¦   ¦           +---ref
+¦   ¦           +---refint
+¦   +---Sistemske operacije
+¦       ¦   SOBase.cs
+¦       ¦   UbaciUcenikGrupuSO.cs
+¦       ¦   
+¦       +---EvidencijaNastaveSO
+¦       ¦       KreirajEvidencijuNastaveSO.cs
+¦       ¦       PretraziEvidencijuNastaveSO.cs
+¦       ¦       PromeniEvidencijuNastaveSO.cs
+¦       ¦       SacuvajPromeneStavkiEvidencijeNastaveSO.cs
+¦       ¦       VratiListuEvidencijaNastaveSO.cs
+¦       ¦       VratiListuSveEvidencijeNastaveSO.cs
+¦       ¦       
+¦       +---GrupaUcenikaSO
+¦       ¦       ObrisiGrupuUcenikaSO.cs
+¦       ¦       PretraziGrupuUcenikaSO.cs
+¦       ¦       PromeniGrupuUcenikaSO.cs
+¦       ¦       UbaciGrupuUcenikaSO.cs
+¦       ¦       VratiListuGrupaUcenikaSO.cs
+¦       ¦       VratiListuSveGrupeUcenikaSO.cs
+¦       ¦       
+¦       +---KursSO
+¦       ¦       PretraziKursSO.cs
+¦       ¦       PromeniKursSO.cs
+¦       ¦       UbaciKursSO.cs
+¦       ¦       VratiListuKursevaSO.cs
+¦       ¦       VratiListuSviKurseviSO.cs
+¦       ¦       
+¦       +---LicenceSO
+¦       ¦       PretraziLicencuSO.cs
+¦       ¦       PromeniLicencuSO.cs
+¦       ¦       UbaciLicencuSO.cs
+¦       ¦       VratiListuLicenceSO.cs
+¦       ¦       VratiListuSveLicenceSO.cs
+¦       ¦       
+¦       +---SertifikatSO
+¦       ¦       ObrisiSertifikatSO.cs
+¦       ¦       PretraziSertifikatSO.cs
+¦       ¦       PromeniSertifikatSO.cs
+¦       ¦       UbaciSertifikatSO.cs
+¦       ¦       VratiListuSertifikataSO.cs
+¦       ¦       VratiListuSviSertifikatiSO.cs
+¦       ¦       
+¦       +---StavkeEvidencijeNastaveSO
+¦       ¦       PretraziStavkuEvidencijeNastaveSO.cs
+¦       ¦       PromeniStavkuEvidencijeNastaveSO.cs
+¦       ¦       UbaciStavkuEvidenceijeNastaveSO.cs
+¦       ¦       VratiListuStavkiEvidencijeSO.cs
+¦       ¦       
+¦       +---UcenikSO
+¦       ¦       ObrisiUcenikaSO.cs
+¦       ¦       PretraziUcenikaSO.cs
+¦       ¦       PromeniUcenikaSO.cs
+¦       ¦       UbaciUcenikaSO.cs
+¦       ¦       VratiListuSviUceniciSO.cs
+¦       ¦       VratiListuUcenikaSO.cs
+¦       ¦       
+¦       +---UciteljSO
+¦               LoginSO.cs
+¦               ObrisiUciteljaSO.cs
+¦               PretraziUciteljaSO.cs
+¦               PromeniUciteljaSO.cs
+¦               UbaciUciteljaSO.cs
+¦               VratiListuSviUciteljiSO.cs
+¦               VratiListuUciteljaSO.cs
+¦               
++---ServerskaAplikacija
+¦   ¦   ClientHandler.cs
+¦   ¦   Kontroler.cs
+¦   ¦   Program.cs
+¦   ¦   Server.cs
+¦   ¦   Server.csproj
+¦   ¦   Server.csproj.user
+¦   ¦   ServerForm.cs
+¦   ¦   ServerForm.Designer.cs
+¦   ¦   ServerForm.resx
+¦   ¦   
+¦   +---bin
+¦   ¦   +---Debug
+¦   ¦       +---net8.0-windows
+¦   ¦           ¦   Azure.Core.dll
+¦   ¦           ¦   Azure.Identity.dll
+¦   ¦           ¦   BrokerBazePodataka.dll
+¦   ¦           ¦   BrokerBazePodataka.pdb
+¦   ¦           ¦   Domeni.dll
+¦   ¦           ¦   Domeni.pdb
+¦   ¦           ¦   Microsoft.Bcl.AsyncInterfaces.dll
+¦   ¦           ¦   Microsoft.Bcl.Cryptography.dll
+¦   ¦           ¦   Microsoft.Data.SqlClient.dll
+¦   ¦           ¦   Microsoft.Extensions.Caching.Abstractions.dll
+¦   ¦           ¦   Microsoft.Extensions.Caching.Memory.dll
+¦   ¦           ¦   Microsoft.Extensions.DependencyInjection.Abstractions.dll
+¦   ¦           ¦   Microsoft.Extensions.Logging.Abstractions.dll
+¦   ¦           ¦   Microsoft.Extensions.Options.dll
+¦   ¦           ¦   Microsoft.Extensions.Primitives.dll
+¦   ¦           ¦   Microsoft.Identity.Client.dll
+¦   ¦           ¦   Microsoft.Identity.Client.Extensions.Msal.dll
+¦   ¦           ¦   Microsoft.IdentityModel.Abstractions.dll
+¦   ¦           ¦   Microsoft.IdentityModel.JsonWebTokens.dll
+¦   ¦           ¦   Microsoft.IdentityModel.Logging.dll
+¦   ¦           ¦   Microsoft.IdentityModel.Protocols.dll
+¦   ¦           ¦   Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+¦   ¦           ¦   Microsoft.IdentityModel.Tokens.dll
+¦   ¦           ¦   Microsoft.SqlServer.Server.dll
+¦   ¦           ¦   Server.deps.json
+¦   ¦           ¦   Server.dll
+¦   ¦           ¦   Server.exe
+¦   ¦           ¦   Server.pdb
+¦   ¦           ¦   Server.runtimeconfig.json
+¦   ¦           ¦   ServerskaAplikacija.deps.json
+¦   ¦           ¦   ServerskaAplikacija.dll
+¦   ¦           ¦   ServerskaAplikacija.exe
+¦   ¦           ¦   ServerskaAplikacija.pdb
+¦   ¦           ¦   ServerskaAplikacija.runtimeconfig.json
+¦   ¦           ¦   System.ClientModel.dll
+¦   ¦           ¦   System.Configuration.ConfigurationManager.dll
+¦   ¦           ¦   System.Diagnostics.EventLog.dll
+¦   ¦           ¦   System.IdentityModel.Tokens.Jwt.dll
+¦   ¦           ¦   System.Memory.Data.dll
+¦   ¦           ¦   System.Security.Cryptography.Pkcs.dll
+¦   ¦           ¦   Zajednicki.dll
+¦   ¦           ¦   Zajednicki.pdb
+¦   ¦           ¦   
+¦   ¦           +---cs
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---de
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---es
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---fr
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---it
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---ja
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---ko
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---pl
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---pt-BR
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---ru
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---runtimes
+¦   ¦           ¦   +---unix
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦       +---net8.0
+¦   ¦           ¦   ¦               Microsoft.Data.SqlClient.dll
+¦   ¦           ¦   ¦               
+¦   ¦           ¦   +---win
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦       +---net8.0
+¦   ¦           ¦   ¦               Microsoft.Data.SqlClient.dll
+¦   ¦           ¦   ¦               System.Diagnostics.EventLog.dll
+¦   ¦           ¦   ¦               System.Security.Cryptography.Pkcs.dll
+¦   ¦           ¦   ¦               
+¦   ¦           ¦   +---win-arm64
+¦   ¦           ¦   ¦   +---native
+¦   ¦           ¦   ¦           Microsoft.Data.SqlClient.SNI.dll
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---win-x64
+¦   ¦           ¦   ¦   +---native
+¦   ¦           ¦   ¦           Microsoft.Data.SqlClient.SNI.dll
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---win-x86
+¦   ¦           ¦       +---native
+¦   ¦           ¦               Microsoft.Data.SqlClient.SNI.dll
+¦   ¦           ¦               
+¦   ¦           +---tr
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---zh-Hans
+¦   ¦           ¦       Microsoft.Data.SqlClient.resources.dll
+¦   ¦           ¦       
+¦   ¦           +---zh-Hant
+¦   ¦                   Microsoft.Data.SqlClient.resources.dll
+¦   ¦                   
+¦   +---obj
+¦   ¦   ¦   project.assets.json
+¦   ¦   ¦   project.nuget.cache
+¦   ¦   ¦   Server.csproj.nuget.dgspec.json
+¦   ¦   ¦   Server.csproj.nuget.g.props
+¦   ¦   ¦   Server.csproj.nuget.g.targets
+¦   ¦   ¦   ServerskaAplikacija.csproj.nuget.dgspec.json
+¦   ¦   ¦   ServerskaAplikacija.csproj.nuget.g.props
+¦   ¦   ¦   ServerskaAplikacija.csproj.nuget.g.targets
+¦   ¦   ¦   
+¦   ¦   +---Debug
+¦   ¦       +---net8.0-windows
+¦   ¦           ¦   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+¦   ¦           ¦   apphost.exe
+¦   ¦           ¦   Server.AssemblyInfo.cs
+¦   ¦           ¦   Server.AssemblyInfoInputs.cache
+¦   ¦           ¦   Server.assets.cache
+¦   ¦           ¦   Server.csproj.AssemblyReference.cache
+¦   ¦           ¦   Server.csproj.BuildWithSkipAnalyzers
+¦   ¦           ¦   Server.csproj.CoreCompileInputs.cache
+¦   ¦           ¦   Server.csproj.FileListAbsolute.txt
+¦   ¦           ¦   Server.csproj.GenerateResource.cache
+¦   ¦           ¦   Server.csproj.Up2Date
+¦   ¦           ¦   Server.dll
+¦   ¦           ¦   Server.GeneratedMSBuildEditorConfig.editorconfig
+¦   ¦           ¦   Server.genruntimeconfig.cache
+¦   ¦           ¦   Server.GlobalUsings.g.cs
+¦   ¦           ¦   Server.pdb
+¦   ¦           ¦   Server.Properties.Resources.resources
+¦   ¦           ¦   Serversk.2CA884A4.Up2Date
+¦   ¦           ¦   ServerskaAplikacija.AssemblyInfo.cs
+¦   ¦           ¦   ServerskaAplikacija.AssemblyInfoInputs.cache
+¦   ¦           ¦   ServerskaAplikacija.assets.cache
+¦   ¦           ¦   ServerskaAplikacija.csproj.AssemblyReference.cache
+¦   ¦           ¦   ServerskaAplikacija.csproj.BuildWithSkipAnalyzers
+¦   ¦           ¦   ServerskaAplikacija.csproj.CoreCompileInputs.cache
+¦   ¦           ¦   ServerskaAplikacija.csproj.FileListAbsolute.txt
+¦   ¦           ¦   ServerskaAplikacija.csproj.GenerateResource.cache
+¦   ¦           ¦   ServerskaAplikacija.designer.deps.json
+¦   ¦           ¦   ServerskaAplikacija.designer.runtimeconfig.json
+¦   ¦           ¦   ServerskaAplikacija.dll
+¦   ¦           ¦   ServerskaAplikacija.GeneratedMSBuildEditorConfig.editorconfig
+¦   ¦           ¦   ServerskaAplikacija.genruntimeconfig.cache
+¦   ¦           ¦   ServerskaAplikacija.GlobalUsings.g.cs
+¦   ¦           ¦   ServerskaAplikacija.pdb
+¦   ¦           ¦   ServerskaAplikacija.Properties.Resources.resources
+¦   ¦           ¦   ServerskaAplikacija.ServerForm.resources
+¦   ¦           ¦   
+¦   ¦           +---ref
+¦   ¦           ¦       Server.dll
+¦   ¦           ¦       ServerskaAplikacija.dll
+¦   ¦           ¦       
+¦   ¦           +---refint
+¦   ¦           ¦       Server.dll
+¦   ¦           ¦       ServerskaAplikacija.dll
+¦   ¦           ¦       
+¦   ¦           +---TempPE
+¦   ¦                   Properties.Resources.Designer.cs.dll
+¦   ¦                   
+¦   +---Properties
+¦   ¦       Resources.Designer.cs
+¦   ¦       Resources.resx
+¦   ¦       
+¦   +---Sistemske operacije
+¦       ¦   SOBase.cs
+¦       ¦   UbaciUcenikGrupuSO.cs
+¦       ¦   
+¦       +---EvidencijaNastaveSO
+¦       ¦       KreirajEvidencijuNastaveSO.cs
+¦       ¦       PretraziEvidencijuNastaveSO.cs
+¦       ¦       PromeniEvidencijuNastaveSO.cs
+¦       ¦       SacuvajPromeneStavkiEvidencijeNastaveSO.cs
+¦       ¦       VratiListuEvidencijaNastaveSO.cs
+¦       ¦       VratiListuSveEvidencijeNastaveSO.cs
+¦       ¦       
+¦       +---GrupaUcenikaSO
+¦       ¦       ObrisiGrupuUcenikaSO.cs
+¦       ¦       PretraziGrupuUcenikaSO.cs
+¦       ¦       PromeniGrupuUcenikaSO.cs
+¦       ¦       UbaciGrupuUcenikaSO.cs
+¦       ¦       VratiListuGrupaUcenikaSO.cs
+¦       ¦       VratiListuSveGrupeUcenikaSO.cs
+¦       ¦       
+¦       +---KursSO
+¦       ¦       PretraziKursSO.cs
+¦       ¦       PromeniKursSO.cs
+¦       ¦       UbaciKursSO.cs
+¦       ¦       VratiListuKursevaSO.cs
+¦       ¦       VratiListuSviKurseviSO.cs
+¦       ¦       
+¦       +---LicenceSO
+¦       ¦       PretraziLicencuSO.cs
+¦       ¦       PromeniLicencuSO.cs
+¦       ¦       UbaciLicencuSO.cs
+¦       ¦       VratiListuLicenceSO.cs
+¦       ¦       VratiListuSveLicenceSO.cs
+¦       ¦       
+¦       +---SertifikatSO
+¦       ¦       ObrisiSertifikatSO.cs
+¦       ¦       PretraziSertifikatSO.cs
+¦       ¦       PromeniSertifikatSO.cs
+¦       ¦       UbaciSertifikatSO.cs
+¦       ¦       VratiListuSertifikataSO.cs
+¦       ¦       VratiListuSviSertifikatiSO.cs
+¦       ¦       
+¦       +---StavkeEvidencijeNastaveSO
+¦       ¦       PretraziStavkuEvidencijeNastaveSO.cs
+¦       ¦       PromeniStavkuEvidencijeNastaveSO.cs
+¦       ¦       UbaciStavkuEvidenceijeNastaveSO.cs
+¦       ¦       VratiListuStavkiEvidencijeSO.cs
+¦       ¦       
+¦       +---UcenikSO
+¦       ¦       ObrisiUcenikaSO.cs
+¦       ¦       PretraziUcenikaSO.cs
+¦       ¦       PromeniUcenikaSO.cs
+¦       ¦       UbaciUcenikaSO.cs
+¦       ¦       VratiListuSviUceniciSO.cs
+¦       ¦       VratiListuUcenikaSO.cs
+¦       ¦       
+¦       +---UciteljSO
+¦               ObrisiUciteljaSO.cs
+¦               PretraziUciteljaSO.cs
+¦               PrijaviUciteljaSO.cs
+¦               PromeniUciteljaSO.cs
+¦               UbaciUciteljaSO.cs
+¦               VratiListuSviUciteljiSO.cs
+¦               VratiListuUciteljaSO.cs
+¦               
++---SistemskeOperacije
+¦   ¦   SistemskeOperacije.csproj
+¦   ¦   
+¦   +---bin
+¦   ¦   +---Debug
+¦   ¦       +---net8.0
+¦   ¦               BrokerBazePodataka.dll
+¦   ¦               BrokerBazePodataka.pdb
+¦   ¦               Domeni.dll
+¦   ¦               Domeni.pdb
+¦   ¦               SistemskeOperacije.deps.json
+¦   ¦               SistemskeOperacije.dll
+¦   ¦               SistemskeOperacije.pdb
+¦   ¦               
+¦   +---obj
+¦   ¦   ¦   project.assets.json
+¦   ¦   ¦   project.nuget.cache
+¦   ¦   ¦   SistemskeOperacije.csproj.nuget.dgspec.json
+¦   ¦   ¦   SistemskeOperacije.csproj.nuget.g.props
+¦   ¦   ¦   SistemskeOperacije.csproj.nuget.g.targets
+¦   ¦   ¦   
+¦   ¦   +---Debug
+¦   ¦       +---net8.0
+¦   ¦           ¦   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+¦   ¦           ¦   Sistemsk.93CF11E2.Up2Date
+¦   ¦           ¦   SistemskeOperacije.AssemblyInfo.cs
+¦   ¦           ¦   SistemskeOperacije.AssemblyInfoInputs.cache
+¦   ¦           ¦   SistemskeOperacije.assets.cache
+¦   ¦           ¦   SistemskeOperacije.csproj.AssemblyReference.cache
+¦   ¦           ¦   SistemskeOperacije.csproj.BuildWithSkipAnalyzers
+¦   ¦           ¦   SistemskeOperacije.csproj.CoreCompileInputs.cache
+¦   ¦           ¦   SistemskeOperacije.csproj.FileListAbsolute.txt
+¦   ¦           ¦   SistemskeOperacije.dll
+¦   ¦           ¦   SistemskeOperacije.GeneratedMSBuildEditorConfig.editorconfig
+¦   ¦           ¦   SistemskeOperacije.GlobalUsings.g.cs
+¦   ¦           ¦   SistemskeOperacije.pdb
+¦   ¦           ¦   
+¦   ¦           +---ref
+¦   ¦           ¦       SistemskeOperacije.dll
+¦   ¦           ¦       
+¦   ¦           +---refint
+¦   ¦                   SistemskeOperacije.dll
+¦   ¦                   
+¦   +---Sistemske operacije
+¦       ¦   SOBase.cs
+¦       ¦   UbaciUcenikGrupuSO.cs
+¦       ¦   
+¦       +---EvidencijaNastaveSO
+¦       ¦       KreirajEvidencijuNastaveSO.cs
+¦       ¦       PretraziEvidencijuNastaveSO.cs
+¦       ¦       PromeniEvidencijuNastaveSO.cs
+¦       ¦       SacuvajPromeneStavkiEvidencijeNastaveSO.cs
+¦       ¦       VratiListuEvidencijaNastaveSO.cs
+¦       ¦       VratiListuSveEvidencijeNastaveSO.cs
+¦       ¦       
+¦       +---GrupaUcenikaSO
+¦       ¦       ObrisiGrupuUcenikaSO.cs
+¦       ¦       PretraziGrupuUcenikaSO.cs
+¦       ¦       PromeniGrupuUcenikaSO.cs
+¦       ¦       UbaciGrupuUcenikaSO.cs
+¦       ¦       VratiListuGrupaUcenikaSO.cs
+¦       ¦       VratiListuSveGrupeUcenikaSO.cs
+¦       ¦       
+¦       +---KursSO
+¦       ¦       PretraziKursSO.cs
+¦       ¦       PromeniKursSO.cs
+¦       ¦       UbaciKursSO.cs
+¦       ¦       VratiListuKursevaSO.cs
+¦       ¦       VratiListuSviKurseviSO.cs
+¦       ¦       
+¦       +---LicenceSO
+¦       ¦       PretraziLicencuSO.cs
+¦       ¦       PromeniLicencuSO.cs
+¦       ¦       UbaciLicencuSO.cs
+¦       ¦       VratiListuLicenceSO.cs
+¦       ¦       VratiListuSveLicenceSO.cs
+¦       ¦       
+¦       +---SertifikatSO
+¦       ¦       ObrisiSertifikatSO.cs
+¦       ¦       PretraziSertifikatSO.cs
+¦       ¦       PromeniSertifikatSO.cs
+¦       ¦       UbaciSertifikatSO.cs
+¦       ¦       VratiListuSertifikataSO.cs
+¦       ¦       VratiListuSviSertifikatiSO.cs
+¦       ¦       
+¦       +---StavkeEvidencijeNastaveSO
+¦       ¦       PretraziStavkuEvidencijeNastaveSO.cs
+¦       ¦       PromeniStavkuEvidencijeNastaveSO.cs
+¦       ¦       UbaciStavkuEvidenceijeNastaveSO.cs
+¦       ¦       VratiListuStavkiEvidencijeSO.cs
+¦       ¦       
+¦       +---UcenikSO
+¦       ¦       ObrisiUcenikaSO.cs
+¦       ¦       PretraziUcenikaSO.cs
+¦       ¦       PromeniUcenikaSO.cs
+¦       ¦       UbaciUcenikaSO.cs
+¦       ¦       VratiListuSviUceniciSO.cs
+¦       ¦       VratiListuUcenikaSO.cs
+¦       ¦       
+¦       +---UciteljSO
+¦               LoginSO.cs
+¦               ObrisiUciteljaSO.cs
+¦               PretraziUciteljaSO.cs
+¦               PromeniUciteljaSO.cs
+¦               UbaciUciteljaSO.cs
+¦               VratiListuSviUciteljiSO.cs
+¦               VratiListuUciteljaSO.cs
+¦               
++---Zajednicki
+    ¦   Zajednicki.csproj
+    ¦   
+    +---bin
+    ¦   +---Debug
+    ¦       +---net8.0
+    ¦               Zajednicki.deps.json
+    ¦               Zajednicki.dll
+    ¦               Zajednicki.pdb
+    ¦               
+    +---Komunikacija
+    ¦       JsonNetworkSerializer.cs
+    ¦       Odgovor.cs
+    ¦       Operacija.cs
+    ¦       Zahtev.cs
+    ¦       
+    +---obj
+        ¦   project.assets.json
+        ¦   project.nuget.cache
+        ¦   Zajednicki.csproj.nuget.dgspec.json
+        ¦   Zajednicki.csproj.nuget.g.props
+        ¦   Zajednicki.csproj.nuget.g.targets
+        ¦   
+        +---Debug
+            +---net8.0
+                ¦   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+                ¦   Zajednicki.AssemblyInfo.cs
+                ¦   Zajednicki.AssemblyInfoInputs.cache
+                ¦   Zajednicki.assets.cache
+                ¦   Zajednicki.csproj.BuildWithSkipAnalyzers
+                ¦   Zajednicki.csproj.CoreCompileInputs.cache
+                ¦   Zajednicki.csproj.FileListAbsolute.txt
+                ¦   Zajednicki.dll
+                ¦   Zajednicki.GeneratedMSBuildEditorConfig.editorconfig
+                ¦   Zajednicki.GlobalUsings.g.cs
+                ¦   Zajednicki.pdb
+                ¦   
+                +---ref
+                ¦       Zajednicki.dll
+                ¦       
+                +---refint
+                        Zajednicki.dll
+                        
